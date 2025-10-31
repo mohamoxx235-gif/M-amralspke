@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <meta name="robots" content="notranslate">
+    <title>English Advanced Exam - Omar El Sobky</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Cairo:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+            font-family: 'Cairo', sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+            color: #5d4037;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .page {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 30px;
+            position: relative;
+            border: 2px solid #d7ccc8;
+            margin-bottom: 20px;
+        }
+        
+        .watermark {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 14px;
+            background: #ffecb3;
+            padding: 6px 12px;
+            border-radius: 50px;
+            border: 2px solid #ffd54f;
+            font-weight: bold;
+            color: #5d4037;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #ffd54f;
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-radius: 15px;
+            padding: 25px;
+        }
+        
+        .title-arabic {
+            font-family: 'El Messiri', sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            color: #4e342e;
+            margin-bottom: 10px;
+        }
+        
+        .title-english {
+            font-family: 'Cairo', sans-serif;
+            font-size: 20px;
+            font-style: italic;
+            color: #6d4c41;
+            margin-bottom: 5px;
+        }
+        
+        .instructions {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-right: 5px solid #4caf50;
+            font-size: 18px;
+            text-align: center;
+        }
+        
+        .student-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .name-input {
+            padding: 10px;
+            border: 2px solid #2196F3;
+            border-radius: 8px;
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+            font-size: 16px;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .progress-container {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .progress-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: #5d4037;
+        }
+        
+        .progress-count {
+            background: #ffd54f;
+            color: #5d4037;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+        
+        .questions-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .question {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .question.answered::before {
+            content: "✓";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #4caf50;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .question:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .question-number {
+            font-size: 16px;
+            font-weight: bold;
+            color: #5d4037;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .number-circle {
+            width: 28px;
+            height: 28px;
+            background: #ffd54f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #5d4037;
+            font-size: 14px;
+        }
+        
+        .question-text {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #424242;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .blank-space {
+            display: inline-block;
+            min-width: 120px;
+            height: 35px;
+            border-bottom: 2px dashed #ff5722;
+            margin: 0 8px;
+            vertical-align: middle;
+            background: #fff3e0;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .blank-space.filled {
+            background: #e8f5e9;
+            border-bottom: 2px solid #4caf50;
+        }
+        
+        .blank-space.filled::after {
+            content: attr(data-answer);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 14px;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .option {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .option:hover {
+            background: #fff8e1;
+            border-color: #ffd54f;
+        }
+        
+        .option.selected {
+            background: #e8f5e9;
+            border-color: #4caf50;
+        }
+        
+        .option-letter {
+            width: 30px;
+            height: 30px;
+            background: #5d4037;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .option.selected .option-letter {
+            background: #4caf50;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .submit-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .page-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .page-btn {
+            padding: 10px 20px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .results-page {
+            display: none;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(#4caf50 0% 0%, #e0e0e0 0% 100%);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .score-circle-inner {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .score-percent {
+            font-size: 36px;
+            font-weight: bold;
+            color: #4caf50;
+        }
+        
+        .score-text {
+            font-size: 16px;
+            color: #757575;
+        }
+        
+        .result-details {
+            margin-top: 30px;
+            background: #f5f5f5;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .correct {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .incorrect {
+            color: #f44336;
+            font-weight: bold;
+        }
+        
+        .wrong-answers {
+            margin-top: 30px;
+            background: #ffebee;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: right;
+        }
+        
+        .wrong-answer-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-right: 4px solid #f44336;
+        }
+        
+        .encouragement {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffecb3, #ffcc80);
+            padding: 20px;
+            border-radius: 15px;
+            color: #5d4037;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .restart-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #2196F3, #0D47A1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .restart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            
+        }
+            .restart-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* الكود الجديد - ضعه هنا */
+    .answers-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .answer-card {
+        background: #fafafa;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid #e0e0e0;
+    }
+
+    .answer-card.correct {
+        border-color: #4caf50;
+        background: #e8f5e9;
+    }
+
+    .answer-card.incorrect {
+        border-color: #f44336;
+        background: #ffebee;
+    }
+
+    .question-number {
+        font-weight: bold;
+        color: #5d4037;
+        margin-bottom: 8px;
+    }
+
+    .student-answer {
+        color: #f44336;
+        font-weight: bold;
+    }
+
+    .correct-answer {
+        color: #4caf50;
+        font-weight: bold;
+    }
+</style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- صفحة الامتحان - الصفحة 1 -->
+        <div id="page1" class="page">
+            <div class="watermark">Kik_Talk 🎡</div>
+            
+            <div class="header">
+                <div class="title-arabic">امتحان الإنجليزية المتقدم - عمر السبكي</div>
+                <div class="title-english">Advanced English Exam - Omar El Sobky</div>
+            </div>
+            
+            <div class="student-info">
+                <h3>👤 معلومات الطالب</h3>
+                <input type="text" class="name-input" id="studentName" 
+                       placeholder="أدخل اسمك الثلاثي" required>
+            </div>
+            
+            <div class="instructions">
+                📝 <strong>اختر الإجابة الصحيحة لتكملة الجملة (الأسئلة 1-15):</strong>
+            </div>
+
+            <!-- شريط التقدم -->
+            <div class="progress-container">
+                <div class="progress-header">
+                    <div class="progress-text">تقدم الامتحان</div>
+                    <div class="progress-count" id="progressCount">0/30</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+            
+            <div class="questions-grid">
+                <!-- الأسئلة 1-15 -->
+                <div class="question" id="question1">
+                    <div class="question-number">
+                        <div class="number-circle">1</div>
+                        السؤال 1
+                    </div>
+                    <div class="question-text">
+                        Creativity <span class="blank-space" data-question="1"></span> people to think out of the box.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="1" data-option="a" data-answer="empowers">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">empowers</div>
+                        </div>
+                        <div class="option" data-question="1" data-option="b" data-answer="allows">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">allows</div>
+                        </div>
+                        <div class="option" data-question="1" data-option="c" data-answer="dispirit">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">dispirit</div>
+                        </div>
+                        <div class="option" data-question="1" data-option="d" data-answer="organizes">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">organizes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question2">
+                    <div class="question-number">
+                        <div class="number-circle">2</div>
+                        السؤال 2
+                    </div>
+                    <div class="question-text">
+                        We had <span class="blank-space" data-question="2"></span> hot weather that summer.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="2" data-option="a" data-answer="chilly">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">chilly</div>
+                        </div>
+                        <div class="option" data-question="2" data-option="b" data-answer="freezing">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">freezing</div>
+                        </div>
+                        <div class="option" data-question="2" data-option="c" data-answer="scorching">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">scorching</div>
+                        </div>
+                        <div class="option" data-question="2" data-option="d" data-answer="glacial">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">glacial</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question3">
+                    <div class="question-number">
+                        <div class="number-circle">3</div>
+                        السؤال 3
+                    </div>
+                    <div class="question-text">
+                        The sudden <span class="blank-space" data-question="3"></span> damaged the winter crops.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="3" data-option="a" data-answer="tidal wave">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">tidal wave</div>
+                        </div>
+                        <div class="option" data-question="3" data-option="b" data-answer="cold night">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">cold night</div>
+                        </div>
+                        <div class="option" data-question="3" data-option="c" data-answer="wave surfing">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">wave surfing</div>
+                        </div>
+                        <div class="option" data-question="3" data-option="d" data-answer="heat wave">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">heat wave</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question4">
+                    <div class="question-number">
+                        <div class="number-circle">4</div>
+                        السؤال 4
+                    </div>
+                    <div class="question-text">
+                        He had a <span class="blank-space" data-question="4"></span> knowledge of English literature.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="4" data-option="a" data-answer="deeply">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">deeply</div>
+                        </div>
+                        <div class="option" data-question="4" data-option="b" data-answer="profound">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">profound</div>
+                        </div>
+                        <div class="option" data-question="4" data-option="c" data-answer="greatly">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">greatly</div>
+                        </div>
+                        <div class="option" data-question="4" data-option="d" data-answer="sincerely">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">sincerely</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question5">
+                    <div class="question-number">
+                        <div class="number-circle">5</div>
+                        السؤال 5
+                    </div>
+                    <div class="question-text">
+                        Male companies can <span class="blank-space" data-question="5"></span> women in the workplace.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="5" data-option="a" data-answer="marginalize">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">marginalize</div>
+                        </div>
+                        <div class="option" data-question="5" data-option="b" data-answer="minoritize">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">minoritize</div>
+                        </div>
+                        <div class="option" data-question="5" data-option="c" data-answer="involve">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">involve</div>
+                        </div>
+                        <div class="option" data-question="5" data-option="d" data-answer="question">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">question</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question6">
+                    <div class="question-number">
+                        <div class="number-circle">6</div>
+                        السؤال 6
+                    </div>
+                    <div class="question-text">
+                        The storm was predicted by the <span class="blank-space" data-question="6"></span> earlier this week.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="6" data-option="a" data-answer="news readers">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">news readers</div>
+                        </div>
+                        <div class="option" data-question="6" data-option="b" data-answer="journalists">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">journalists</div>
+                        </div>
+                        <div class="option" data-question="6" data-option="c" data-answer="economists">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">economists</div>
+                        </div>
+                        <div class="option" data-question="6" data-option="d" data-answer="meteorologists">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">meteorologists</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question7">
+                    <div class="question-number">
+                        <div class="number-circle">7</div>
+                       السؤال 7
+       </div>
+                    <div class="question-text">
+                        There is no rain and the country is witnessing a severe <span class="blank-space" data-question="7"></span>.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="7" data-option="a" data-answer="downpour">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">downpour</div>
+                        </div>
+                        <div class="option" data-question="7" data-option="b" data-answer="flooding">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">flooding</div>
+                        </div>
+                        <div class="option" data-question="7" data-option="c" data-answer="drought">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">drought</div>
+                        </div>
+                        <div class="option" data-question="7" data-option="d" data-answer="draught">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">draught</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question8">
+                    <div class="question-number">
+                        <div class="number-circle">8</div>
+                        السؤال 8
+                    </div>
+                    <div class="question-text">
+                        The law ensures social <span class="blank-space" data-question="8"></span> to all citizens.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="8" data-option="a" data-answer="honesty">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">honesty</div>
+                        </div>
+                        <div class="option" data-question="8" data-option="b" data-answer="equity">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">equity</div>
+                        </div>
+                        <div class="option" data-question="8" data-option="c" data-answer="etiquette">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">etiquette</div>
+                        </div>
+                        <div class="option" data-question="8" data-option="d" data-answer="equivalent">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">equivalent</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question9">
+                    <div class="question-number">
+                        <div class="number-circle">9</div>
+                        السؤال 9
+                    </div>
+                    <div class="question-text">
+                        The experiment provides <span class="blank-space" data-question="9"></span> evidence supporting the theory.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="9" data-option="a" data-answer="tangible">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">tangible</div>
+                        </div>
+                        <div class="option" data-question="9" data-option="b" data-answer="virtual">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">virtual</div>
+                        </div>
+                        <div class="option" data-question="9" data-option="c" data-answer="technical">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">technical</div>
+                        </div>
+                        <div class="option" data-question="9" data-option="d" data-answer="hardware">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">hardware</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question10">
+                    <div class="question-number">
+                        <div class="number-circle">10</div>
+                        السؤال 10
+                    </div>
+                    <div class="question-text">
+                        Don't be so <span class="blank-space" data-question="10"></span>! Life is a short journey!
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="10" data-option="a" data-answer="helpless">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">helpless</div>
+                        </div>
+                        <div class="option" data-question="10" data-option="b" data-answer="dull">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">dull</div>
+                        </div>
+                        <div class="option" data-question="10" data-option="c" data-answer="defeating">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">defeating</div>
+                        </div>
+                        <div class="option" data-question="10" data-option="d" data-answer="pessimistic">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">pessimistic</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question11">
+                    <div class="question-number">
+                        <div class="number-circle">11</div>
+                        السؤال 11
+                    </div>
+                    <div class="question-text">
+                        Carbon dioxide <span class="blank-space" data-question="11"></span> are causing the Earth to warm.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="11" data-option="a" data-answer="releases">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">releases</div>
+                        </div>
+                        <div class="option" data-question="11" data-option="b" data-answer="extracts">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">extracts</div>
+                        </div>
+                        <div class="option" data-question="11" data-option="c" data-answer="emissions">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">emissions</div>
+                        </div>
+                        <div class="option" data-question="11" data-option="d" data-answer="entrances">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">entrances</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question12">
+                    <div class="question-number">
+                        <div class="number-circle">12</div>
+                        السؤال 12
+                    </div>    <div class="question-text">
+                        Our Army bears the <span class="blank-space" data-question="12"></span> of defending the nation.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="12" data-option="a" data-answer="shoulder">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">shoulder</div>
+                        </div>
+                        <div class="option" data-question="12" data-option="b" data-answer="burden">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">burden</div>
+                        </div>
+                        <div class="option" data-question="12" data-option="c" data-answer="innovation">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">innovation</div>
+                        </div>
+                        <div class="option" data-question="12" data-option="d" data-answer="Load">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">Load</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question13">
+                    <div class="question-number">
+                        <div class="number-circle">13</div>
+                        السؤال 13
+                    </div>
+                    <div class="question-text">
+                        The world <span class="blank-space" data-question="13"></span> was outraged by the genocide in Gaza.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="13" data-option="a" data-answer="community">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">community</div>
+                        </div>
+                        <div class="option" data-question="13" data-option="b" data-answer="group">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">group</div>
+                        </div>
+                        <div class="option" data-question="13" data-option="c" data-answer="region">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">region</div>
+                        </div>
+                        <div class="option" data-question="13" data-option="d" data-answer="association">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">association</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question14">
+                    <div class="question-number">
+                        <div class="number-circle">14</div>
+                        السؤال 14
+                    </div>
+                    <div class="question-text">
+                        The <span class="blank-space" data-question="14"></span> says it's going to be cold and rainy tomorrow.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="14" data-option="a" data-answer="broadcast">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">broadcast</div>
+                        </div>
+                        <div class="option" data-question="14" data-option="b" data-answer="forecast">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">forecast</div>
+                        </div>
+                        <div class="option" data-question="14" data-option="c" data-answer="expects">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">expects</div>
+                        </div>
+                        <div class="option" data-question="14" data-option="d" data-answer="predictive">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">predictive</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question15">
+                    <div class="question-number">
+                        <div class="number-circle">15</div>
+                        السؤال 15
+                    </div>
+                    <div class="question-text">
+                        Cars' exhaust <span class="blank-space" data-question="15"></span> are harmful to the environment.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="15" data-option="a" data-answer="gases">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">gases</div>
+                        </div>
+                        <div class="option" data-question="15" data-option="b" data-answer="steams">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">steams</div>
+                        </div>
+                        <div class="option" data-question="15" data-option="c" data-answer="fuels">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">fuels</div>
+                        </div>
+                        <div class="option" data-question="15" data-option="d" data-answer="elements">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">elements</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الأسئلة 16-30 -->
+                <div class="question" id="question16">
+                    <div class="question-number">
+                        <div class="number-circle">16</div>
+                        السؤال 16
+                    </div>
+                    <div class="question-text">
+                        We must reduce the <span class="blank-space" data-question="16"></span> gases to save the planet.
+                    </div>
+                    <div class="options">
+                            <div class="option" data-question="16" data-option="a" data-answer="detached house">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">detached house</div>
+                        </div>
+                        <div class="option" data-question="16" data-option="b" data-answer="glasshouse">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">glasshouse</div>
+                        </div>
+                        <div class="option" data-question="16" data-option="c" data-answer="greenhouse">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">greenhouse</div>
+                        </div>
+                        <div class="option" data-question="16" data-option="d" data-answer="smart house">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">smart house</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question17">
+                    <div class="question-number">
+                        <div class="number-circle">17</div>
+                        السؤال 17
+                    </div>
+                    <div class="question-text">
+                        Heat waves and floods are both examples of <span class="blank-space" data-question="17"></span> weather.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="17" data-option="a" data-answer="excess">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">excess</div>
+                        </div>
+                        <div class="option" data-question="17" data-option="b" data-answer="extreme">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">extreme</div>
+                        </div>
+                        <div class="option" data-question="17" data-option="c" data-answer="accessible">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">accessible</div>
+                        </div>
+                        <div class="option" data-question="17" data-option="d" data-answer="intensely">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">intensely</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question18">
+                    <div class="question-number">
+                        <div class="number-circle">18</div>
+                        السؤال 18
+                    </div>
+                    <div class="question-text">
+                        Countries need <span class="blank-space" data-question="18"></span> solutions to combat climate change.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="18" data-option="a" data-answer="friendly">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">friendly</div>
+                        </div>
+                        <div class="option" data-question="18" data-option="b" data-answer="acceptable">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">acceptable</div>
+                        </div>
+                        <div class="option" data-question="18" data-option="c" data-answer="rational">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">rational</div>
+                        </div>
+                        <div class="option" data-question="18" data-option="d" data-answer="sustainable">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">sustainable</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question19">
+                    <div class="question-number">
+                        <div class="number-circle">19</div>
+                        السؤال 19
+                    </div>
+                    <div class="question-text">
+                        When minds open, <span class="blank-space" data-question="19"></span> flows.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="19" data-option="a" data-answer="creativity">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">creativity</div>
+                        </div>
+                        <div class="option" data-question="19" data-option="b" data-answer="innovative">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">innovative</div>
+                        </div>
+                        <div class="option" data-question="19" data-option="c" data-answer="original">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">original</div>
+                        </div>
+                        <div class="option" data-question="19" data-option="d" data-answer="ingenious">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">ingenious</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question20">
+                    <div class="question-number">
+                        <div class="number-circle">20</div>
+                        السؤال 20
+                    </div>   <div class="question-text">
+                        The <span class="blank-space" data-question="20"></span> of the new projects will create lots of jobs.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="20" data-option="a" data-answer="plantation">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">plantation</div>
+                        </div>
+                        <div class="option" data-question="20" data-option="b" data-answer="realisation">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">realisation</div>
+                        </div>
+                        <div class="option" data-question="20" data-option="c" data-answer="communication">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">communication</div>
+                        </div>
+                        <div class="option" data-question="20" data-option="d" data-answer="implementation">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">implementation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question21">
+                    <div class="question-number">
+                        <div class="number-circle">21</div>
+                        السؤال 21
+                    </div>
+                    <div class="question-text">
+                        A large-scale <span class="blank-space" data-question="21"></span> was launched to reduce plastic waste.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="21" data-option="a" data-answer="initial">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">initial</div>
+                        </div>
+                        <div class="option" data-question="21" data-option="b" data-answer="initiative">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">initiative</div>
+                        </div>
+                        <div class="option" data-question="21" data-option="c" data-answer="acceptance">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">acceptance</div>
+                        </div>
+                        <div class="option" data-question="21" data-option="d" data-answer="document">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">document</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question22">
+                    <div class="question-number">
+                        <div class="number-circle">22</div>
+                        السؤال 22
+                    </div>
+                    <div class="question-text">
+                        The CV should <span class="blank-space" data-question="22"></span> both hard and soft skills.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="22" data-option="a" data-answer="announce">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">announce</div>
+                        </div>
+                        <div class="option" data-question="22" data-option="b" data-answer="declare">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">declare</div>
+                        </div>
+                        <div class="option" data-question="22" data-option="c" data-answer="emphasize">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">emphasize</div>
+                        </div>
+                        <div class="option" data-question="22" data-option="d" data-answer="make sure">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">make sure</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question23">
+                    <div class="question-number">
+                        <div class="number-circle">23</div>
+                        السؤال 23
+                    </div>
+                    <div class="question-text">
+                        The world leaders put the <span class="blank-space" data-question="23"></span> of global warming on the table.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="23" data-option="a" data-answer="title">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">title</div>
+                        </div>
+                        <div class="option" data-question="23" data-option="b" data-answer="subject">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">subject</div>
+                        </div>
+                        <div class="option" data-question="23" data-option="c" data-answer="sector">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">sector</div>
+                        </div>
+                        <div class="option" data-question="23" data-option="d" data-answer="issue">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">issue</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question24">
+                    <div class="question-number">
+                        <div class="number-circle">24</div>
+                        السؤال 24
+                    </div>
+                    <div class="question-text">
+                        The city planners designed the park having an eye to <span class="blank-space" data-question="24"></span> conservation.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="24" data-option="a" data-answer="environmental">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">environmental</div>
+                        </div>
+                        <div class="option" data-question="24" data-option="b" data-answer="technical">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">technical</div>
+                        </div>
+                        <div class="option" data-question="24" data-option="c" data-answer="climate">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">climate</div>
+                        </div>
+                        <div class="option" data-question="24" data-option="d" data-answer="meteorological">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">meteorological</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question25">
+                    <div class="question-number">
+                        <div class="number-circle">25</div>
+                        السؤال 25
+                    </div> <div class="question-text">
+                        Drug abuse can lead to serious health <span class="blank-space" data-question="25"></span>.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="25" data-option="a" data-answer="sequels">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">sequels</div>
+                        </div>
+                        <div class="option" data-question="25" data-option="b" data-answer="influences">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">influences</div>
+                        </div>
+                        <div class="option" data-question="25" data-option="c" data-answer="consequences">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">consequences</div>
+                        </div>
+                        <div class="option" data-question="25" data-option="d" data-answer="affects">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">affects</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question26">
+                    <div class="question-number">
+                        <div class="number-circle">26</div>
+                        السؤال 26
+                    </div>
+                    <div class="question-text">
+                        Our country is rich in natural and human <span class="blank-space" data-question="26"></span>.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="26" data-option="a" data-answer="sources">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">sources</div>
+                        </div>
+                        <div class="option" data-question="26" data-option="b" data-answer="resources">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">resources</div>
+                        </div>
+                        <div class="option" data-question="26" data-option="c" data-answer="rights">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">rights</div>
+                        </div>
+                        <div class="option" data-question="26" data-option="d" data-answer="beings">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">beings</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question27">
+                    <div class="question-number">
+                        <div class="number-circle">27</div>
+                        السؤال 27
+                    </div>
+                    <div class="question-text">
+                        Every failure one meets will adds to one's <span class="blank-space" data-question="27"></span>.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="27" data-option="a" data-answer="experience">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">experience</div>
+                        </div>
+                        <div class="option" data-question="27" data-option="b" data-answer="experiment">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">experiment</div>
+                        </div>
+                        <div class="option" data-question="27" data-option="c" data-answer="phenomenon">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">phenomenon</div>
+                        </div>
+                        <div class="option" data-question="27" data-option="d" data-answer="consideration">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">consideration</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question28">
+                    <div class="question-number">
+                        <div class="number-circle">28</div>
+                        السؤال 28
+                    </div>
+                    <div class="question-text">
+                        <span class="blank-space" data-question="28"></span> countries are to be blamed for global warming.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="28" data-option="a" data-answer="Marginalizing">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">Marginalizing</div>
+                        </div>
+                        <div class="option" data-question="28" data-option="b" data-answer="Computerized">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">Computerized</div>
+                        </div>
+                        <div class="option" data-question="28" data-option="c" data-answer="Automated">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">Automated</div>
+                        </div>
+                        <div class="option" data-question="28" data-option="d" data-answer="Industrialized">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">Industrialized</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question29">
+                    <div class="question-number">
+                        <div class="number-circle">29</div>
+                        السؤال 29
+                    </div>
+                    <div class="question-text">
+                        Many coastal towns were desolated by the <span class="blank-space" data-question="29"></span>.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="29" data-option="a" data-answer="climates">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">climates</div>
+                        </div>
+                        <div class="option" data-question="29" data-option="b" data-answer="meteorologists">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">meteorologists</div>
+                        </div>
+                        <div class="option" data-question="29" data-option="c" data-answer="hurricanes">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">hurricanes</div>
+                        </div>
+                        <div class="option" data-question="29" data-option="d" data-answer="washing water">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">washing water</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question" id="question30">
+                    <div class="question-number">
+                        <div class="number-circle">30</div>
+                        السؤال 30
+                    </div>
+                    <div class="question-text">
+                        Rising sea levels <span class="blank-space" data-question="30"></span> coastal cities.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="30" data-option="a" data-answer="threaten">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">threaten</div>
+                        </div>
+                        <div class="option" data-question="30" data-option="b" data-answer="empower">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">empower</div>
+                        </div>
+                        <div class="option" data-question="30" data-option="c" data-answer="defend">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">defend</div>
+                        </div>
+                        <div class="option" data-question="30" data-option="d" data-answer="risk">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">risk</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="page-navigation">
+                <button class="page-btn" onclick="showPage(2)">الصفحة التالية →</button>
+            </div>
+        </div>
+                    <div class="page-navigation">
+                <button class="page-btn" onclick="showPage(2)">الصفحة التالية →</button>
+            </div>
+        </div>
+
+        <!-- صفحة الامتحان - الصفحة 2 -->
+        <div id="page2" class="page" style="display: none;">
+            <div class="watermark">Kik_Talk 🎡</div>
+            
+            <div class="header">
+                <div class="title-arabic">امتحان الإنجليزية المتقدم - عمر السبكي</div>
+                <div class="title-english">Advanced English Exam - Omar El Sobky</div>
+            </div>
+            
+            <div class="instructions">
+                📝 <strong>اختر الإجابة الصحيحة لتكملة الجملة (الأسئلة 16-30):</strong>
+            </div>
+
+            <!-- شريط التقدم -->
+            <div class="progress-container">
+                <div class="progress-header">
+                    <div class="progress-text">تقدم الامتحان</div>
+                    <div class="progress-count" id="progressCount2">0/30</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill2"></div>
+                </div>
+            </div>
+            
+            <div class="questions-grid">
+                <!-- نفس الأسئلة 16-30 مكررة للصفحة الثانية -->
+                <div class="question" id="question16-2">
+                    <div class="question-number">
+                        <div class="number-circle">16</div>
+                        السؤال 16
+                    </div>
+                    <div class="question-text">
+                        We must reduce the <span class="blank-space" data-question="16"></span> gases to save the planet.
+                    </div>
+                    <div class="options">
+                        <div class="option" data-question="16" data-option="a" data-answer="detached house">
+                            <div class="option-letter">a</div>
+                            <div class="option-text">detached house</div>
+                        </div>
+                        <div class="option" data-question="16" data-option="b" data-answer="glasshouse">
+                            <div class="option-letter">b</div>
+                            <div class="option-text">glasshouse</div>
+                        </div>
+                        <div class="option" data-question="16" data-option="c" data-answer="greenhouse">
+                            <div class="option-letter">c</div>
+                            <div class="option-text">greenhouse</div>
+                        </div>
+                        <div class="option" data-question="16" data-option="d" data-answer="smart house">
+                            <div class="option-letter">d</div>
+                            <div class="option-text">smart house</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ... باقي الأسئلة 17-30 بنفس النمط ... -->
+
+            </div>
+
+            <div class="page-navigation">
+                <button class="page-btn" onclick="showPage(1)">← الصفحة السابقة</button>
+                <button id="submitBtn" class="submit-btn" disabled>تسليم الإجابات</button>
+            </div>
+        </div>
+
+<!-- صفحة النتائج -->
+<div id="resultsPage" class="page results-page">
+    <div class="watermark">Kik_Talk 🎡</div>
+    
+    <div class="header">
+        <div class="title-arabic">نتيجة امتحان الإنجليزية</div>
+        <div class="title-english">English Exam Results</div>
+    </div>
+    
+    <div class="score-circle">
+        <div class="score-circle-inner">
+            <div class="score-percent" id="scorePercent">0%</div>
+            <div class="score-text">النسبة المئوية</div>
+        </div>
+    </div>
+    
+    <div class="result-details">
+        <div class="result-item">
+            <span>عدد الأسئلة:</span>
+            <span>30</span>
+        </div>
+        <div class="result-item">
+            <span>الإجابات الصحيحة:</span>
+            <span class="correct" id="correctAnswers">0</span>
+        </div>
+        <div class="result-item">
+            <span>الإجابات الخاطئة:</span>
+            <span class="incorrect" id="incorrectAnswers">0</span>
+        </div>
+        <div class="result-item">
+            <span>النسبة المئوية:</span>
+            <span class="correct" id="percentage">0%</span>
+        </div>
+    </div>
+
+    <div class="answers-grid" id="answersGrid">
+        <!-- هنا راح تظهر كل الأسئلة والإجابات -->
+    </div>
+    
+    <div class="encouragement">
+        Keep going, champ! 💪🇬🇧
+    </div>
+    
+    <button class="restart-btn" onclick="location.reload()">إعادة الامتحان</button>
+</div>
+            <div class="watermark">Kik_Talk 🎡</div>
+            
+            <div class="header">
+                <div class="title-arabic">نتيجة الامتحان</div>
+                <div class="title-english">Exam Results</div>
+            </div>
+            
+            <div class="score-circle">
+                <div class="score-circle-inner">
+                    <div class="score-percent" id="scorePercent">0%</div>
+                    <div class="score-text">النسبة المئوية</div>
+                </div>
+            </div>
+            
+            <div class="result-details">
+                <div class="result-item">
+                    <span>اسم الطالب:</span>
+                    <span id="studentNameDisplay">-</span>
+                </div>
+                <div class="result-item">
+                    <span>عدد الأسئلة:</span>
+                    <span id="totalQuestions">30</span>
+                </div>
+                <div class="result-item">
+                    <span>الإجابات الصحيحة:</span>
+                    <span class="correct" id="correctAnswers">0</span>
+                </div>
+                <div class="result-item">
+                    <span>الإجابات الخاطئة:</span>
+                    <span class="incorrect" id="incorrectAnswers">0</span>
+                </div>
+                <div class="result-item">
+                    <span>النسبة المئوية:</span>
+                    <span class="correct" id="percentage">0%</span>
+                </div>
+            </div>
+
+            <div id="wrongAnswersSection" class="wrong-answers" style="display: none;">
+                <h3>❌ الإجابات الخاطئة</h3>
+                <div id="wrongAnswersList"></div>
+            </div>
+            
+            <div class="encouragement">
+                Keep going, champ! 💪🇬🇧
+            </div>
+            
+            <button class="restart-btn" id="restartBtn">إعادة الامتحان</button>
+        </div>
+    </div>
+
+    <script>
+        // الإجابات الصحيحة
+        const correctAnswers = {
+            1: "a", 2: "c", 3: "d", 4: "b", 5: "a",
+            6: "d", 7: "c", 8: "b", 9: "a", 10: "d",
+            11: "c", 12: "b", 13: "a", 14: "b", 15: "a",
+            16: "c", 17: "b", 18: "d", 19: "a", 20: "d",
+            21: "b", 22: "c", 23: "d", 24: "a", 25: "c",
+            26: "b", 27: "a", 28: "d", 29: "c", 30: "a"
+        };
+
+        let userAnswers = {};
+        let studentName = "";
+
+        // تحديث شريط التقدم
+        function updateProgress() {
+            const answeredQuestions = Object.keys(userAnswers).length;
+            const totalQuestions = 30;
+            const percentage = (answeredQuestions / totalQuestions) * 100;
+            
+            // تحديث العداد
+            document.getElementById('progressCount').textContent = `${answeredQuestions}/${totalQuestions}`;
+            document.getElementById('progressCount2').textContent = `${answeredQuestions}/${totalQuestions}`;
+            
+            // تحديث شريط التقدم
+            document.getElementById('progressFill').style.width = `${percentage}%`;
+            document.getElementById('progressFill2').style.width = `${percentage}%`;
+            
+            // تحديث علامة الإجابة على الأسئلة
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionElement = document.getElementById(`question${i}`);
+                if (userAnswers[i]) {
+                    if (questionElement) questionElement.classList.add('answered');
+                } else {
+                    if (questionElement) questionElement.classList.remove('answered');
+                }
+            }
+        }
+
+        // إدارة الصفحات
+        function showPage(pageNumber) {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('resultsPage').style.display = 'none';
+            
+            document.getElementById('page' + pageNumber).style.display = 'block';
+            checkAllQuestionsAnswered();
+        }
+
+        // التحقق من إجابة جميع الأسئلة
+        function checkAllQuestionsAnswered() {
+            const totalQuestions = Object.keys(correctAnswers).length;
+            const answeredQuestions = Object.keys(userAnswers).length;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            submitBtn.disabled = answeredQuestions !== totalQuestions;
+        }
+
+        // أحداث الخيارات
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const questionNum = this.getAttribute('data-question');
+                const optionLetter = this.getAttribute('data-option');
+                const answerText = this.getAttribute('data-answer');
+                
+                // إزالة التحديد من جميع خيارات هذا السؤال
+                document.querySelectorAll(`.option[data-question="${questionNum}"]`).forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // تحديد الخيار المختار
+                this.classList.add('selected');
+                
+                // ملء المساحة الفارغة
+                const blankSpace = document.querySelector(`.blank-space[data-question="${questionNum}"]`);
+                blankSpace.classList.add('filled');
+                blankSpace.setAttribute('data-answer', answerText);
+                
+                // حفظ إجابة المستخدم
+                userAnswers[questionNum] = optionLetter;
+                
+                updateProgress();
+                checkAllQuestionsAnswered();
+            });
+        });
+
+        // زر التسليم
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            studentName = document.getElementById('studentName').value.trim();
+            
+            if (!studentName) {
+                alert("⚠️ الرجاء إدخال اسمك الثلاثي أولاً");
+                return;
+            }
+
+            // حساب النتائج
+            let correctCount = 0;
+            let wrongAnswers = [];
+
+            for (let i = 1; i <= 30; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    correctCount++;
+                } else {
+                    wrongAnswers.push({
+                        question: i,
+                        userAnswer: userAnswers[i],
+                        correctAnswer: correctAnswers[i]
+                    });
+                }
+            }
+
+            const percentage = Math.round((correctCount / 30) * 100);
+
+            // عرض النتائج
+            document.getElementById('studentNameDisplay').textContent = studentName;
+            document.getElementById('correctAnswers').textContent = correctCount;
+            document.getElementById('incorrectAnswers').textContent = 30 - correctCount;
+            document.getElementById('percentage').textContent = `${percentage}%`;
+            document.getElementById('scorePercent').textContent = `${percentage}%`;
+
+            // تحديث الدائرة البيانية
+            const scoreCircle = document.querySelector('.score-circle');
+            scoreCircle.style.background = `conic-gradient(#4caf50 0% ${percentage}%, #e0e0e0 ${percentage}% 100%)`;
+            // عرض الإجابات الخاطئة
+            if (wrongAnswers.length > 0) {
+                const wrongAnswersList = document.getElementById('wrongAnswersList');
+                wrongAnswersList.innerHTML = '';
+                
+                wrongAnswers.forEach(wrong => {
+                    const wrongItem = document.createElement('div');
+                    wrongItem.className = 'wrong-answer-item';
+                    wrongItem.innerHTML = `
+                        <strong>السؤال ${wrong.question}:</strong><br>
+                        إجابتك: <span class="incorrect">${wrong.userAnswer}</span><br>
+                        الإجابة الصحيحة: <span class="correct">${wrong.correctAnswer}</span>
+                    `;
+                    wrongAnswersList.appendChild(wrongItem);
+                });
+                
+                document.getElementById('wrongAnswersSection').style.display = 'block';
+            }
+
+            showPage('results');
+        });
+
+        // زر إعادة الامتحان
+        document.getElementById('restartBtn').addEventListener('click', function() {
+            userAnswers = {};
+            studentName = "";
+            
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            document.querySelectorAll('.blank-space').forEach(space => {
+                space.classList.remove('filled');
+                space.removeAttribute('data-answer');
+            });
+            
+            document.getElementById('studentName').value = "";
+            document.getElementById('wrongAnswersSection').style.display = 'none';
+            
+            updateProgress();
+            showPage(1);
+        });
+        // بدء الصفحة الأولى
+        showPage(1);
+        updateProgress();
+
+        /* الكود الجديد - ضعه هنا */
+        // نص الأسئلة الكامل
+        const questions = {
+            1: "Creativity _______ people to think out of the box.",
+            2: "We had _______ hot weather that summer.",
+            3: "The sudden _______ damaged the winter crops.",
+            4: "He had a _______ knowledge of English literature.",
+            5: "Male companies can _______ women in the workplace.",
+            6: "The storm was predicted by the _______ earlier this week.",
+            7: "There is no rain and the country is witnessing a severe _______.",
+            8: "The law ensures social _______ to all citizens.",
+            9: "The experiment provides _______ evidence supporting the theory.",
+            10: "Don't be so _______! Life is a short journey!",
+            11: "Carbon dioxide _______ are causing the Earth to warm.",
+            12: "Our Army bears the _______ of defending the nation.",
+            13: "The world _______ was outraged by the genocide in Gaza.",
+            14: "The _______ says it's going to be cold and rainy tomorrow.",
+            15: "Cars' exhaust _______ are harmful to the environment.",
+            16: "We must reduce the _______ gases to save the planet.",
+            17: "Heat waves and floods are both examples of _______ weather.",
+            18: "Countries need _______ solutions to combat climate change.",
+            19: "When minds open, _______ flows.",
+            20: "The _______ of the new projects will create lots of jobs.",
+            21: "A large-scale _______ was launched to reduce plastic waste.",
+            22: "The CV should _______ both hard and soft skills.",
+            23: "The world leaders put the _______ of global warming on the table.",
+            24: "The city planners designed the park having an eye to _______ conservation.",
+            25: "Drug abuse can lead to serious health _______.",
+            26: "Our country is rich in natural and human _______.",
+            27: "Every failure one meets will adds to one's _______.",
+            28: "_______ countries are to be blamed for global warming.",
+            29: "Many coastal towns were desolated by the _______.",
+            30: "Rising sea levels _______ coastal cities."
+        };
+
+        // نص الخيارات الكامل
+        const optionsText = {
+            1: { a: "empowers", b: "allows", c: "dispirit", d: "organizes" },
+            2: { a: "chilly", b: "freezing", c: "scorching", d: "glacial" },
+            3: { a: "tidal wave", b: "cold night", c: "wave surfing", d: "heat wave" },
+            4: { a: "deeply", b: "profound", c: "greatly", d: "sincerely" },
+            5: { a: "marginalize", b: "minoritize", c: "involve", d: "question" },
+            6: { a: "news readers", b: "journalists", c: "economists", d: "meteorologists" },
+            7: { a: "downpour", b: "flooding", c: "drought", d: "draught" },
+            8: { a: "honesty", b: "equity", c: "etiquette", d: "equivalent" },
+            9: { a: "tangible", b: "virtual", c: "technical", d: "hardware" },
+            10: { a: "helpless", b: "dull", c: "defeating", d: "pessimistic" },
+            11: { a: "releases", b: "extracts", c: "emissions", d: "entrances" },
+            12: { a: "shoulder", b: "burden", c: "innovation", d: "Load" },
+            13: { a: "community", b: "group", c: "region", d: "association" },
+            14: { a: "broadcast", b: "forecast", c: "expects", d: "predictive" },
+            15: { a: "gases", b: "steams", c: "fuels", d: "elements" },
+            16: { a: "detached house", b: "glasshouse", c: "greenhouse", d: "smart house" },
+            17: { a: "excess", b: "extreme", c: "accessible", d: "intensely" },
+            18: { a: "friendly", b: "acceptable", c: "rational", d: "sustainable" },
+            19: { a: "creativity", b: "innovative", c: "original", d: "ingenious" },
+            20: { a: "plantation", b: "realisation", c: "communication", d: "implementation" },
+            21: { a: "initial", b: "initiative", c: "acceptance", d: "document" },
+            22: { a: "announce", b: "declare", c: "emphasize", d: "make sure" },
+            23: { a: "title", b: "subject", c: "sector", d: "issue" },
+            24: { a: "environmental", b: "technical", c: "climate", d: "meteorological" },
+            25: { a: "sequels", b: "influences", c: "consequences", d: "affects" },
+            26: { a: "sources", b: "resources", c: "rights", d: "beings" },
+            27: { a: "experience", b: "experiment", c: "phenomenon", d: "consideration" },
+            28: { a: "Marginalizing", b: "Computerized", c: "Automated", d: "Industrialized" },
+            29: { a: "climates", b: "meteorologists", c: "hurricanes", d: "washing water" },
+            30: { a: "threaten", b: "empower", c: "defend", d: "risk" }
+        };
+
+        // دالة لعرض التفاصيل
+        function showDetailedResults() {
+            const answersGrid = document.getElementById('answersGrid');
+            answersGrid.innerHTML = '';
+
+            for (let i = 1; i <= 30; i++) {
+                const isCorrect = userAnswers[i] === correctAnswers[i];
+                
+                const answerCard = document.createElement('div');
+                answerCard.className = `answer-card ${isCorrect ? 'correct' : 'incorrect'}`;
+                
+                answerCard.innerHTML = `
+                    <div class="question-number">السؤال ${i}</div>
+                    <div style="margin-bottom: 8px; font-size: 14px;">${questions[i]}</div>
+                    <div>إجابتك: <span class="${isCorrect ? 'correct-answer' : 'student-answer'}">${optionsText[i][userAnswers[i]]}</span></div>
+                    ${!isCorrect ? `<div>الإجابة الصحيحة: <span class="correct-answer">${optionsText[i][correctAnswers[i]]}</span></div>` : ''}
+                `;
+
+                answersGrid.appendChild(answerCard);
+            }
+        }
+    </script>
+</body>
+</html>
